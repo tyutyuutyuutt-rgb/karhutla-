@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalimantan Memanggil | Suara Hutan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #090909;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #392019;
+}
+
+.logo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: #ff5722;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #ff5722;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 10% 80px;
+    background:
+    linear-gradient(90deg, #090909 5%, rgba(0,0,0,.75), rgba(0,0,0,.2)),
+    url('images.jpeg') center/cover;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.tag {
+    color: #ff5722;
+    letter-spacing: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(55px, 9vw, 110px);
+    line-height: .95;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.hero h1 span {
+    color: #ff5722;
+}
+
+.hero p {
+    color: #ccc;
+    font-size: 15px;
+    line-height: 1.9;
+    max-width: 550px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 16px 30px;
+    background: #d93816;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: white;
+    color: black;
+    transform: translateY(-4px);
+}
+
+section {
+    padding: 100px 10%;
+}
+
+.section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.section-title span {
+    color: #ff5722;
+}
+
+.subtitle {
+    color: #999;
+    line-height: 1.8;
+    margin-bottom: 45px;
+}
+
+.about {
+    background: #111;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+    align-items: center;
+}
+
+.about img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    filter: saturate(.75);
+}
+
+.about-text p {
+    color: #aaa;
+    line-height: 2;
+    margin-bottom: 20px;
+}
+
+.gallery {
+    background: #090909;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .6s;
+    filter: brightness(.7);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+    filter: brightness(1);
+}
+
+.gallery-item h3 {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 25px;
+    text-shadow: 0 2px 10px black;
+}
+
+.message {
+    background: linear-gradient(135deg, #210d08, #090909);
+    text-align: center;
+}
+
+.message h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(35px, 6vw, 65px);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.message h2 span {
+    color: #ff5722;
+}
+
+.message p {
+    color: #bbb;
+    line-height: 2;
+    max-width: 750px;
+    margin: auto;
+}
+
+.demands {
+    background: #111;
+}
+
+.demand-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.demand {
+    padding: 30px;
+    border-left: 3px solid #ff5722;
+    background: #191919;
+    transition: .3s;
+}
+
+.demand:hover {
+    background: #281710;
+    transform: translateY(-5px);
+}
+
+.demand h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.demand p {
+    color: #999;
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+.final {
+    min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background:
+    linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.9)),
+    url('images (2).jpeg') center/cover;
+}
+
+.final h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(40px, 7vw, 75px);
+    text-transform: uppercase;
+}
+
+.final h2 span {
+    color: #ff5722;
+}
+
+.final p {
+    color: #ccc;
+    margin-top: 20px;
+    letter-spacing: 2px;
+}
+
+footer {
+    background: #050505;
+    text-align: center;
+    padding: 35px 15px;
+    color: #666;
+    font-size: 11px;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+footer strong {
+    color: #ff5722;
+}
+
+@media(max-width: 768px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    nav a {
+        margin-left: 10px;
+        font-size: 9px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .hero {
+        padding: 120px 7%;
+    }
+
+    section {
+        padding: 75px 7%;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid,
+    .demand-list {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item {
+        height: 240px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">KALIMANTAN.</div>
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#tentang">TENTANG</a>
+        <a href="#dampak">DAMPAK</a>
+        <a href="#suara">SUARA RAKYAT</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+
+<div class="hero" id="home">
+    <div class="hero-content">
+        <div class="tag">SUARA HUTAN YANG TERLUKA</div>
+
+        <h1>
+            KALIMANTAN<br>
+            <span>MEMANGGIL.</span>
+        </h1>
+
+        <p>
+            Ketika hutan terbakar, bukan hanya pepohonan yang hilang.
+            Rumah satwa musnah, udara tercemar, kehidupan masyarakat
+            terancam, dan masa depan generasi berikutnya dipertaruhkan.
+        </p>
+
+        <a href="#tentang" class="btn">BACA PERLAWANAN</a>
+    </div>
+</div>
+
+<!-- TENTANG -->
+
+<section class="about" id="tentang">
+    <div class="about-grid">
+
+        <img src="images (1).jpeg" alt="Orangutan di tengah kebakaran hutan">
+
+        <div class="about-text">
+            <div class="tag">01 / REALITAS</div>
+
+            <h2 class="section-title">
+                HUTAN KITA<br>
+                <span>SEDANG TERLUKA.</span>
+            </h2>
+
+            <p>
+                Kebakaran hutan dan lahan atau karhutla merupakan
+                ancaman serius bagi Kalimantan.
+            </p>
+
+            <p>
+                Di balik asap yang menyelimuti langit, ada masyarakat
+                yang kehilangan kenyamanan hidup. Ada satwa yang
+                kehilangan habitatnya. Ada ekosistem yang membutuhkan
+                waktu panjang untuk pulih.
+            </p>
+
+            <p>
+                Kita tidak boleh diam ketika lingkungan terus
+                menghadapi ancaman.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- GALERI -->
+
+<section class="gallery" id="dampak">
+    <div class="tag">02 / BUKTI KERUSAKAN</div>
+
+    <h2 class="section-title">
+        BUKAN SEKADAR <span>API.</span>
+    </h2>
+
+    <p class="subtitle">
+        Setiap kebakaran meninggalkan dampak yang jauh melampaui
+        apa yang terlihat oleh mata.
+    </p>
+
+    <div class="gallery-grid">
+
+        <div class="gallery-item">
+            <img src="images (2).jpeg" alt="Satwa terdampak kebakaran">
+            <h3>HILANGNYA HABITAT</h3>
+        </div>
+
+        <div class="gallery-item">
+            <img src="images (1).jpeg" alt="Orangutan">
+            <h3>ANCAMAN BAGI SATWA</h3>
+        </div>
+
+        <div class="gallery-item">
+            <img src="images.jpeg" alt="Hutan terbakar">
+            <h3>HUTAN DALAM BAHAYA</h3>
+        </div>
+
+        <div class="gallery-item">
+            <img src="images (2).jpeg" alt="Satwa di kawasan kebakaran">
+            <h3>MASA DEPAN TERANCAM</h3>
+        </div>
+
+    </div>
+</section>
+
+<!-- PESAN PERLAWANAN -->
+
+<section class="message" id="suara">
+    <div class="tag">03 / SUARA RAKYAT</div>
+
+    <h2>
+        KAMI TIDAK AKAN<br>
+        <span>DIAM.</span>
+    </h2>
+
+    <p>
+        Kami menolak pembiaran terhadap kerusakan lingkungan.
+        Kami menuntut pemerintah untuk tidak menutup mata,
+        tidak mengabaikan suara masyarakat, dan tidak membiarkan
+        kepentingan ekonomi mengalahkan keselamatan lingkungan.
+
+        <br><br>
+
+        Kritik bukan kejahatan. Menuntut keadilan bukan kesalahan.
+        Menjaga hutan adalah tanggung jawab bersama.
+    </p>
+</section>
+
+<!-- TUNTUTAN -->
+
+<section class="demands">
+    <div class="tag">04 / TUNTUTAN KAMI</div>
+
+    <h2 class="section-title">
+        KEADILAN UNTUK <span>KALIMANTAN.</span>
+    </h2>
+
+    <p class="subtitle">
+        Kami menginginkan tindakan nyata, bukan sekadar janji.
+    </p>
+
+    <div class="demand-list">
+
+        <div class="demand">
+            <h3>01. PENEGAKAN HUKUM</h3>
+            <p>
+                Usut secara transparan pihak yang terbukti
+                bertanggung jawab atas kebakaran hutan dan lahan.
+            </p>
+        </div>
+
+        <div class="demand">
+            <h3>02. PERLINDUNGAN HUTAN</h3>
+            <p>
+                Lindungi hutan Kalimantan dari eksploitasi dan
+                kerusakan lingkungan yang tidak bertanggung jawab.
+            </p>
+        </div>
+
+        <div class="demand">
+            <h3>03. KESELAMATAN MASYARAKAT</h3>
+            <p>
+                Pastikan masyarakat terdampak mendapatkan
+                perlindungan kesehatan dan bantuan yang layak.
+            </p>
+        </div>
+
+        <div class="demand">
+            <h3>04. TRANSPARANSI PEMERINTAH</h3>
+            <p>
+                Buka informasi penanganan karhutla dan
+                pertanggungjawaban kebijakan kepada publik.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- PENUTUP -->
+
+<div class="final">
+    <div>
+        <h2>
+            HUTAN BUKAN<br>
+            <span>UNTUK DIHANCURKAN.</span>
+        </h2>
+
+        <p>
+            SATU BUMI. SATU MASA DEPAN. SATU TANGGUNG JAWAB.
+        </p>
+
+        <a href="#home" class="btn">KEMBALI KE ATAS</a>
+    </div>
+</div>
+
+<footer>
+    <strong>KALIMANTAN MEMANGGIL</strong><br>
+    SUARA UNTUK HUTAN, SATWA, DAN KEADILAN LINGKUNGAN.<br>
+    <br>
+    KRITIS. BERANI. DAMAI. BERTANGGUNG JAWAB.
+</footer>
+
+</body>
+</html>
